@@ -7,6 +7,11 @@ class Header extends Component {
     return (
       <div className="App">
         <header className="App-header">
+          <h1>{this.props.title}</h1>
+          <div>{this.props.testObject.a}</div>
+          <div>{this.props.testObject.b}</div>
+          <div>{this.props.addFunction(3, 7)}</div>
+          <div>{this.props.multiFunction(2, 4)}</div>
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit <code>src/App.js</code> and save to reload.
@@ -26,10 +31,19 @@ class Header extends Component {
 }
 
 class App extends Component {
+  multiply(a, b) {
+    return a * b;
+  }
   render() {
+    const add = (a, b) => a + b;
     return (
       <div className="App">
-        <Header />
+        <Header
+          title={"this is the title"}
+          testObject={{ a: 4, b: 33 }}
+          addFunction={add}
+          multiFunction={this.multiply}
+        />
       </div>
     );
   }
